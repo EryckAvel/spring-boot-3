@@ -1,1 +1,15 @@
-spring.application.name=SpringBoot3
+spring:
+  application:
+    name: spring-boot-3
+  datasource:
+    drive-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot3?useTimeZone=true&serverTimeZone=UTC
+    username: root
+    password: eryck3003
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+    show-sql: false
+    open-in-view: false

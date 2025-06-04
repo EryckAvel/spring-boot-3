@@ -3,18 +3,19 @@ package com.eryckavel.spring_boot_3.service;
 import com.eryckavel.spring_boot_3.exception.ResourceNotFoundException;
 import com.eryckavel.spring_boot_3.model.Person;
 import com.eryckavel.spring_boot_3.repository.PersonRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.logging.Logger;
 
 @Service
 public class PersonService {
 
     private final AtomicLong counter = new AtomicLong();
-    private Logger log = Logger.getLogger(PersonService.class.getName());
+    private Logger log = LoggerFactory.getLogger(PersonService.class.getName());
     @Autowired
     private PersonRepository repository;
 

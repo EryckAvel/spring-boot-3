@@ -31,15 +31,15 @@ public class PersonService {
 
     public PersonDTO findById(Long id){
         log.info("Find a PersonDTO!");
-        var entidade = repository.findById(id)
+        var entity = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("PersonDTO not found!"));
-        return parseObject(entidade, PersonDTO.class);
+        return parseObject(entity, PersonDTO.class);
     }
 
     public PersonDTO create(PersonDTO person){
         log.info("Creating a PersonDTO!");
-        Person entidade = parseObject(person, Person.class);
-        return parseObject(repository.save(entidade), PersonDTO.class);
+        Person entity = parseObject(person, Person.class);
+        return parseObject(repository.save(entity), PersonDTO.class);
     }
 
     public PersonDTO update(PersonDTO person){

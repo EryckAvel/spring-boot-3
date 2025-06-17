@@ -1,10 +1,12 @@
 package com.eryckavel.spring_boot_3.service;
 
-import com.eryckavel.spring_boot_3.dto.PersonDTO;
+import com.eryckavel.spring_boot_3.dto.v1.PersonDTO;
+import com.eryckavel.spring_boot_3.dto.v2.PersonDTOV2;
 import com.eryckavel.spring_boot_3.exception.ResourceNotFoundException;
 import static com.eryckavel.spring_boot_3.mapper.ObjectMapper.parseListObjects;
 import static com.eryckavel.spring_boot_3.mapper.ObjectMapper.parseObject;
 
+import com.eryckavel.spring_boot_3.mapper.custom.PersonMapper;
 import com.eryckavel.spring_boot_3.model.Person;
 import com.eryckavel.spring_boot_3.repository.PersonRepository;
 import org.slf4j.Logger;
@@ -22,6 +24,9 @@ public class PersonService {
     private Logger log = LoggerFactory.getLogger(PersonService.class.getName());
     @Autowired
     private PersonRepository repository;
+    @Autowired
+    private PersonMapper converter;
+
 
 
     public List<PersonDTO> findAll(){
@@ -41,6 +46,13 @@ public class PersonService {
         Person entity = parseObject(person, Person.class);
         return parseObject(repository.save(entity), PersonDTO.class);
     }
+
+    public PersonDTOV2 createV2(PersonDTOV2 person){
+        log.info("Creating a PersonDTO!");
+        Person entity = converter.convertDTOToEntity(person);
+        return converter.convertEntityToDTO(repository.save(entity));
+    }
+
 
     public PersonDTO update(PersonDTO person){
         log.info("Updating a PersonDTO!");

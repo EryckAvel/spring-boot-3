@@ -1,6 +1,6 @@
 package com.eryckavel.spring_boot_3.unitetests.mapper;
 
-import com.eryckavel.spring_boot_3.dto.PersonDTO;
+import com.eryckavel.spring_boot_3.dto.v1.PersonDTO;
 import com.eryckavel.spring_boot_3.model.Person;
 import com.eryckavel.spring_boot_3.unitetests.mapper.mocks.MockPerson;
 import org.junit.jupiter.api.BeforeEach;

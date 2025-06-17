@@ -1,6 +1,7 @@
 package com.eryckavel.spring_boot_3.controller;
 
-import com.eryckavel.spring_boot_3.dto.PersonDTO;
+import com.eryckavel.spring_boot_3.dto.v1.PersonDTO;
+import com.eryckavel.spring_boot_3.dto.v2.PersonDTOV2;
 import com.eryckavel.spring_boot_3.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -29,6 +30,11 @@ public class PersonController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public PersonDTO create(@RequestBody PersonDTO person){
         return personService.create(person);
+    }
+
+    @PostMapping(value = "/v2",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public PersonDTOV2 create(@RequestBody PersonDTOV2 person){
+        return personService.createV2(person);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
